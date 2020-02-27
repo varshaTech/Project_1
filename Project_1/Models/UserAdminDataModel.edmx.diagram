@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2d28b8c277404e75bf488c6d0b4030fe" Name="Diagram1">
+        <EntityTypeShape EntityType="Proj1_DB_Models.Client_Details" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Proj1_DB_Models.UserAdmin" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Proj1_DB_Models.Meeting_Details" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Proj1_DB_Models.Attendence2" Width="1.5" PointX="0.75" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

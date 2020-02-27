@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Project_1.Models.Client_Details>
+
+@{
+    ViewBag.Title = "Index";
+}
+    
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+<h4>Client Details</h4>
+
+<p>
+@Html.ActionLink("Create New", "Create")
+</p>
+    @*Modal code*@
+    @*
+        using (Html.BeginForm())
+        {
+        @Html.AntiForgeryToken()
+        <button class="btn btn-primary btn-sm pull-right" data-toggle="modal" data-target="#CreateClientModal">Create Client by modal</button>
+        <div class="modal fade" data-keyboard="false" data-backdrop="static" id="CreateClientModal" tabindex="-1" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Create Client</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Firm_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Firm_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Firm_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Contact_Person_Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Contact_Person_Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Contact_Person_Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email_ID, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Email_ID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mobile_No, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Mobile_No, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Mobile_No, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary">Create</button>
+                        <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    //Modal code end
+    *@
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Firm_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contact_Person_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mobile_No)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Firm_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contact_Person_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mobile_No)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.C_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.C_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.C_ID })
+        </td>
+    </tr>
+}
+
+</table>
