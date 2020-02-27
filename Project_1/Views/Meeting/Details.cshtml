@@ -1,0 +1,74 @@
+﻿@model Project_1.Models.Meeting_Details
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Meeting Details By User</h2>
+
+@*<div>
+    <h4>Meeting_Details</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Client_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Client_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Time)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Time)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.M_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>*@
+
+
+<table style="font-family:Arial">
+    <tr>
+        <td>ID:</td>
+        <td>@Model.M_ID </td>
+    </tr>
+    <tr>
+        <td>Client Name:</td>
+        <td>@Model.Client_Name</td>
+    </tr>
+    <tr>
+        <td>DateTime:</td>
+        <td>@Model.Date_Time</td>
+    </tr>
+    <tr>
+        <td>Note:</td>
+        <td>@Model.Note</td>
+    </tr>
+</table>
+<p>
+    @Html.ActionLink("Back to Client List", "Index", new { ID = @Model.M_ID })
+</p>

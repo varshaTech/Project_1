@@ -1,0 +1,13 @@
+﻿@model Project_1.Models.UserAdmin
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+
+@Html.HiddenFor(m=>m.ID)
+
+<input data-val="true" data-val-number="The field ID must be a number" data-val-required="ID field is required"
+       id="ID" name="LoginID" type="hidden" value="1" />

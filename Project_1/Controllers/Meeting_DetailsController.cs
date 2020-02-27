@@ -21,7 +21,6 @@ namespace Project_1.Controllers
             ViewBag.Client_Name = new SelectList(db.Client_Details, "C_ID", "Firm_Name");
             return View(db.Meeting_Details.ToList());
         }
-
         public ActionResult Client_New()
         {
             var items = db.Client_Details.ToList();
@@ -58,7 +57,7 @@ namespace Project_1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Client_New([Bind(Include = "M_ID,Client_Name,Date_Time,Note")] Meeting_Details meeting_Details)
+        public ActionResult Client_New([Bind(Include = "M_ID,Client_Name,Date_Time,Note,ID")] Meeting_Details meeting_Details)
         {
             if (ModelState.IsValid)
             {
@@ -108,7 +107,7 @@ namespace Project_1.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "M_ID,Client_Name,Date_Time,Note")] Meeting_Details meeting_Details)
+        public ActionResult Edit([Bind(Include = "M_ID,Client_Name,Date_Time,Note,ID")] Meeting_Details meeting_Details)
         {
             if (ModelState.IsValid)
             {
@@ -152,7 +151,7 @@ namespace Project_1.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
+        }   
     }
 }
 

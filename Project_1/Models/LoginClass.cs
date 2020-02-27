@@ -5,21 +5,25 @@ using System.Web;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-
 namespace Project_1.Models
-{
+{ 
+    [System.ComponentModel.DataAnnotations.Schema.Table("UserAdmin")]
     public class LoginClass
     {
         //[Required(ErrorMessage ="Date is required")]
         //public Nullable<System.DateTime> Date { get; set; }
-
-        [DisplayName("Email ID")]
-        [Required(ErrorMessage = "Email ID is required")]
+        public Nullable<System.DateTime> Date { get; set; }
+        [Required]
+        [DataType(DataType.EmailAddress)]
         public string Email_ID { get; set; }
-
-        [Required(ErrorMessage = "Password is required")]
-        [DisplayName("Password")]
+        [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        
+        public string ErrorMsg { get; set; }
+        public LoginClass()
+        {
+            Date = DateTime.Now;
+        }
     }
 }

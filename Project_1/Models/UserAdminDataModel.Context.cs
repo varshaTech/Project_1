@@ -25,9 +25,9 @@ namespace Project_1.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Client_Details> Client_Details { get; set; }
-        public virtual DbSet<UserAdmin> UserAdmins { get; set; }
-        public virtual DbSet<Meeting_Details> Meeting_Details { get; set; }
         public virtual DbSet<Attendence2> Attendence2 { get; set; }
+        public virtual DbSet<Client_Details> Client_Details { get; set; }
+        public virtual DbSet<Meeting_Details> Meeting_Details { get; set; }
+        public virtual DbSet<UserAdmin> UserAdmins { get; set; }
     }
 }

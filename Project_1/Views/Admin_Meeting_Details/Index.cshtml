@@ -1,18 +1,47 @@
-﻿@model IEnumerable<Project_1.Models.Meeting_Details>
-
+﻿@using Project_1.Models
+@model IEnumerable<UserAdmin>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "User list";
     Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
 }
 
-<h2>Index</h2>
+<h2>User List</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-@Html.DropDownList("Name", new SelectList(ViewBag.data, "Name", "Name"), new { Style = "width:250px; height:40px" })
-&nbsp; &nbsp;
-<input type="submit" value="Submit" class="btn btn-default" style="border:thick" />
+<ul class="list-group" style="width:200px">
+    @foreach (UserAdmin user in @Model)
+    {
+        <li class="list-group-item">@Html.ActionLink(user.Name, "Index", "Admin_Meet_Display", new { MeetID = user.ID }, null)</li>
+    }
+</ul>
+
+    @*@Html.DropDownListFor(model=>model.ID, ViewBag.UserAdmins as SelectList,"---Select Username---", new { @onChange= "selectedText(ddlItem)" })*@
+    
+    @*<input type="text" id="txt" />*@
+    
+    @*@Html.DropDownList("Name", new SelectList(ViewBag.data, "Name", "Name", new { @onChange = "selectedText(this)" }), new { Style = "width:250px; height:40px" })
+    <input type="submit" value="Submit" class="btn btn-default" style="border:thick" />*@
+
+    @*--------------------------*@
+
+    @*@foreach (var name in Model.listUA)
+    {
+        @Html.DropDownList("Name", new SelectList(ViewBag.data, "Name", "Name"), new { Style = "width:250px; height:40px" })
+        
+        @Html.DisplayNameFor(Model=>Model.listMeeting)
+
+    }*@
+   
+    @*<select asp-for="Name" asp-items="@(new SelectList(Model.Name,"Name","Name"))"></select>
+    <input type="submit" value="Submit" class="btn btn-default" style="border:thick" />
+
+    <h1>@TempData["Data"]</h1>*@
+
+
+@*@foreach (UserAdmin user in @Model)
+{
+    @Html.DropDownList("Name", new SelectList(ViewBag.data, "Name", "Name"), new { Style = "width:250px; height:40px" })
+}*@
+
 @*<table class="table">
     <tr>
         <th>
@@ -35,7 +64,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Date_Time)
         </td>
-        <td>
+        <td> 
             @Html.DisplayFor(modelItem => item.Note)
         </td>
         <td>
@@ -47,3 +76,12 @@
 }
 
 </table>*@
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    function selectedText(ddlItem)
+    {
+        var selValue = ddlItem.value;
+        var selText = ddlItem.options[ddlItem.selectedIndex].innerHTML;
+        $('txt').val(selText);
+    }
+</script>

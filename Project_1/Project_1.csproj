@@ -158,12 +158,25 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminAllMeetingDetailsController.cs" />
+    <Compile Include="Controllers\AdminAttendence2Controller.cs" />
+    <Compile Include="Controllers\AdminEditProfileController.cs" />
+    <Compile Include="Controllers\Admin_Create_UserAdminController.cs" />
+    <Compile Include="Controllers\Admin_Meeting_ArrangedController.cs" />
     <Compile Include="Controllers\Admin_Meeting_DetailsController.cs" />
+    <Compile Include="Controllers\Admin_meet_displayController.cs" />
+    <Compile Include="Controllers\ALoginController.cs" />
+    <Compile Include="Controllers\AMeetingTrialController.cs" />
     <Compile Include="Controllers\Client_DetailsController.cs" />
     <Compile Include="Controllers\EditProfileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\Meeting_DetailsController.cs" />
     <Compile Include="Controllers\Proj1_DBContextEntities.cs" />
+    <Compile Include="Controllers\TrialDashBoardController.cs" />
+    <Compile Include="Controllers\TrialHiddenController.cs" />
+    <Compile Include="Controllers\uaController.cs" />
+    <Compile Include="Controllers\uatrialController.cs" />
     <Compile Include="Controllers\ULoginController.cs" />
     <Compile Include="Controllers\UserAdminsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -172,14 +185,20 @@
     <Compile Include="Models\Attendence2.cs">
       <DependentUpon>UserAdminDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\attendence2_model.cs" />
     <Compile Include="Models\Client_Details.cs">
       <DependentUpon>UserAdminDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\logggiinnn.cs" />
     <Compile Include="Models\LoginClass.cs" />
+    <Compile Include="Models\meetingclass.cs" />
     <Compile Include="Models\Meeting_Details.cs">
       <DependentUpon>UserAdminDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\modelMeeting.cs" />
+    <Compile Include="Models\modelUA.cs" />
+    <Compile Include="Models\modelUaMeeting.cs" />
+    <Compile Include="Models\requiredAttribute.cs" />
+    <Compile Include="Models\UA_Attend2.cs" />
     <Compile Include="Models\UserAdmin.cs">
       <DependentUpon>UserAdminDataModel.tt</DependentUpon>
     </Compile>
@@ -198,6 +217,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserAdminDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\useradmin_model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -207,6 +227,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\css\Login.css" />
     <Content Include="Content\css\sb-admin.css" />
     <Content Include="Content\css\sb-admin.min.css" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -2124,9 +2145,57 @@
     <Content Include="Views\EditProfile\Edit.cshtml" />
     <Content Include="Views\EditProfile\Index.cshtml" />
     <Content Include="Views\ULogin\Login13.cshtml" />
+    <Content Include="Views\ULogin\UserDashBoard.cshtml" />
+    <Content Include="Views\AdminEditProfile\Create.cshtml" />
+    <Content Include="Views\AdminEditProfile\Delete.cshtml" />
+    <Content Include="Views\AdminEditProfile\Details.cshtml" />
+    <Content Include="Views\AdminEditProfile\Edit.cshtml" />
+    <Content Include="Views\AdminEditProfile\Index.cshtml" />
+    <Content Include="Views\Admin_Create_UserAdmin\Create.cshtml" />
+    <Content Include="Views\Admin_Create_UserAdmin\Details.cshtml" />
+    <Content Include="Views\Admin_Create_UserAdmin\Edit.cshtml" />
+    <Content Include="Views\Admin_Create_UserAdmin\Index.cshtml" />
+    <Content Include="Views\ALogin\Create.cshtml" />
+    <Content Include="Views\ALogin\Delete.cshtml" />
+    <Content Include="Views\ALogin\Details.cshtml" />
+    <Content Include="Views\ALogin\Edit.cshtml" />
+    <Content Include="Views\ALogin\Index.cshtml" />
+    <Content Include="Views\ALogin\Login15.cshtml" />
+    <Content Include="Views\ALogin\UserDashBoard2.cshtml" />
+    <Content Include="Views\AMeetingTrial\Index.cshtml" />
+    <Content Include="Views\TrialDashBoard\Index.cshtml" />
+    <Content Include="Views\ua\Index.cshtml" />
+    <Content Include="Views\Meeting\Create.cshtml" />
+    <Content Include="Views\Meeting\Delete.cshtml" />
+    <Content Include="Views\Meeting\Details.cshtml" />
+    <Content Include="Views\Meeting\Edit.cshtml" />
+    <Content Include="Views\Meeting\Index.cshtml" />
+    <Content Include="Views\Admin_meet_display\Create.cshtml" />
+    <Content Include="Views\Admin_meet_display\Delete.cshtml" />
+    <Content Include="Views\Admin_meet_display\Details.cshtml" />
+    <Content Include="Views\Admin_meet_display\Edit.cshtml" />
+    <Content Include="Views\Admin_meet_display\Index.cshtml" />
+    <Content Include="Views\AdminAllMeetingDetails\Create.cshtml" />
+    <Content Include="Views\AdminAllMeetingDetails\Delete.cshtml" />
+    <Content Include="Views\AdminAllMeetingDetails\Details.cshtml" />
+    <Content Include="Views\AdminAllMeetingDetails\Edit.cshtml" />
+    <Content Include="Views\AdminAllMeetingDetails\Index.cshtml" />
+    <Content Include="Views\Admin_Meeting_Arranged\Create.cshtml" />
+    <Content Include="Views\Admin_Meeting_Arranged\Delete.cshtml" />
+    <Content Include="Views\Admin_Meeting_Arranged\Details.cshtml" />
+    <Content Include="Views\Admin_Meeting_Arranged\Edit.cshtml" />
+    <Content Include="Views\Admin_Meeting_Arranged\Index.cshtml" />
+    <Content Include="Views\AdminAttendence2\Create.cshtml" />
+    <Content Include="Views\AdminAttendence2\Delete.cshtml" />
+    <Content Include="Views\AdminAttendence2\Details.cshtml" />
+    <Content Include="Views\AdminAttendence2\Edit.cshtml" />
+    <Content Include="Views\AdminAttendence2\Index.cshtml" />
+    <Content Include="Views\TrialHidden\Index.cshtml" />
+    <Content Include="Views\Admin_Create_UserAdmin\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\uatrial\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -1,0 +1,14 @@
+﻿@using Project_1.Models
+@model IEnumerable<UserAdmin>
+@{
+    ViewBag.Title = "User list";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User List</h2>
+<ul>
+    @foreach (UserAdmin user in @Model)
+    {
+        <li>@Html.ActionLink(user.Name, "Index", "Meeting", new { MeetID = user.ID }, null)</li>
+    }
+</ul>

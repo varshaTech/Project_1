@@ -1,0 +1,19 @@
+﻿
+.CustomForm {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid;
+    background-color: darkslategray;
+    color: white;
+    border-radius: 20px;
+    /*background-color:darkgrey;*/
+}
+
+    .CustomForm:hover {
+        -webkit-box-shadow: 7px -7px 12px -6px rgba(99,88,99,1);
+        -moz-box-shadow: 7px -7px 12px -6px rgba(99,88,99,1);
+        box-shadow: 7px -7px 12px -6px rgba(99,88,99,1);
+    }
+    h2{
+        padding:10px;
+    }

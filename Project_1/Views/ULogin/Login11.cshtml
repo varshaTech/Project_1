@@ -1,4 +1,4 @@
-﻿@model Project_1.Models.UserAdmin
+﻿@model Project_1.Models.LoginClass
 
 @{
     ViewBag.Title = "Login11";
@@ -13,65 +13,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/css/Login.css" />
+    <!-- Optional theme -- >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+
     <title>My Project</title>
     <!-- Custom fonts for this template-->
-    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
-    <link href="~/Content/css/sb-admin.css" rel="stylesheet">
 
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body id="page-top">
-    <div id="content-wrapper">
-        <div class="container-fluid" style="padding-left: 500px;"><br /><br />
-            <div class="row" style="vertical-align:central">
-                <div class="col-md-5">
-                    <div style="border:2px ridge black; padding:5px;">
-                        <h3 class="text-center">Login</h3>
-                       
-                        @*@using (Html.BeginForm())*@
-                        @using (Html.BeginForm("Login11","ULogin",FormMethod.Post))
-                        {
-                            @Html.AntiForgeryToken()
 
-                            <div class="form-horizontal">
+    @using (Html.BeginForm("Login11", "ULogin", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-sm col-md-4"></div>
+                    <form>
+                    <div class="col-sm col-md-4 CustomForm">
+                        <h2 class="h2">User Login</h2>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.Email_ID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Email_ID, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" }})
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                        </div>
 
-                                <hr />
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @*---To display login credential error msg from controller to view in systematic block------*@
+                        @*---I create property ErrorMsg in LoginClass.cs & pass it as a parameter in ALoginController's else part  *@
+                        @*---& then used it in this file model.ErrorMsg*@
+                        @Html.ValidationMessageFor(model => model.ErrorMsg, "", new { @class = "text-danger" })
 
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4">
                                 <div class="form-group">
-                                    @Html.LabelFor(model => model.Email_ID, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Email_ID, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Email_ID, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                                        @*trial ViewBag
-                                        @ViewBag.ErrorMessage*@
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <input type="submit" value="Login" name="login" class="btn btn-default" />
-                                    </div>
+                                    <input type="submit" value="Login" name="login" class="btn btn-primary form-control" />
                                 </div>
                             </div>
-
-
-                        }
+                            @*<div class="col-md-1"></div>*@
+                            <div class="col-md-4">
+                                <input type="reset" value="Reset" name="reset" class="btn btn-info form-control" />
+                            </div>
+                            @*<div class="col-md-1"></div>*@
+                        </div>
                     </div>
-                </div>
+                    </form>
+                <div class="col-sm col-md-4"></div>
             </div>
-
         </div>
-
-    </div>
-</body>
+    }
+    </body>
 </html>

@@ -2,17 +2,36 @@
 
 @{
     ViewBag.Title = "Index";
+    if (Session["Id"] == null)
+    {
+        Response.Redirect("~/ULogin/Login11");
+    }
 }
     
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">*@
 
-<script src="~/Scripts/bootstrap.min.js"></script>
-<h4>Client Details</h4>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
-<p>
-@Html.ActionLink("Create New", "Create")
-</p>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<div class="row">
+    <div class="col-sm col-md-4">
+        <h5>Client Details</h5>
+    </div>
+    <div class="col-sm col-md-4"> </div>
+    <div class="col-sm col-md-4" style="text-align:end">
+        <button class="active">@Html.ActionLink("Create New", "Create")</button>
+    </div>
+</div>
+
+
     @*Modal code*@
     @*
         using (Html.BeginForm())
@@ -82,43 +101,46 @@
 
     //Modal code end
     *@
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Firm_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contact_Person_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email_ID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mobile_No)
-        </th>
-        <th></th>
-    </tr>
+<div class="table-responsive-md">
+    <table class="table">
+        <tr class="table-primary">
+            <th>
+                @Html.DisplayNameFor(model => model.Firm_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Contact_Person_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mobile_No)
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Firm_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contact_Person_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email_ID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mobile_No)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.C_ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.C_ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.C_ID })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr class="table-info">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Firm_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contact_Person_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email_ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mobile_No)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.C_ID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.C_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.C_ID })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

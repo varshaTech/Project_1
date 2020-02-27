@@ -48,16 +48,33 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            @Html.LabelFor(model=>model.ID, htmlAttributes: new { @class="control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ID, "", new { @class="text-danger"})
             </div>
         </div>
-    </div>
+
+        @*<div class="form-group">
+            <input type="hidden" value="@ViewBag.hdnflg" id="hdnflg" />
+        </div>*@
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
 }
 
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script type="text/javascript">
+    var hdnFlagVal = $("#hdnflg").val();
+</script>
 
 <script type="text/javascript">
     $(function () {

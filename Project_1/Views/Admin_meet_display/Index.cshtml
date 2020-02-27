@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Project_1.Models.Meeting_Details>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Index admin display</h2>
+
+<p>
+    @Html.ActionLink("Back to users list", "Index", "Admin_Meeting_Details")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Client_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Time)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Client_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Time)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.M_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.M_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.M_ID })
+        </td>*@
+    </tr>
+}
+
+</table>

@@ -10,7 +10,7 @@ using Project_1.Models;
 
 namespace Project_1.Controllers
 {
-    [Authorize]
+    
     public class Client_DetailsController : Controller
     {
         private Proj1_DBEntitiesContext db = new Proj1_DBEntitiesContext();
@@ -19,6 +19,10 @@ namespace Project_1.Controllers
         public ActionResult Index()
         {
             return View(db.Client_Details.ToList());
+
+            //var userId = (int)Session["userId"];
+            //return View(voi.Where(t => t.ID == userId).ToList());
+
             //if block is trial
             //if(Session["emailId"]==null)
             //{

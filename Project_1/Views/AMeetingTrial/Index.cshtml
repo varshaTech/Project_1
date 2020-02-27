@@ -1,0 +1,9 @@
+﻿@model Project_1.Models.UserAdmin
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Index</h2>
+@Html.DropDownListFor(model=>model.ID,ViewBag.UserAdmin as SelectList,"--Select Username--")
+

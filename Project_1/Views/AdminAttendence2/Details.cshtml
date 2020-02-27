@@ -1,0 +1,51 @@
+﻿@model Project_1.Models.Attendence2
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Attendence2</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DATE_TIME)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DATE_TIME)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserAdmin.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserAdmin.Name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

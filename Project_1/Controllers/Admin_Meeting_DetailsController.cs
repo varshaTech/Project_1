@@ -15,18 +15,41 @@ namespace Project_1.Controllers
         private Proj1_DBEntitiesContext db = new Proj1_DBEntitiesContext();
 
         // GET: Admin_Meeting_Details
-        public ActionResult Index()
+        
+        public ActionResult Index(Meeting_Details md)
         {
+            List<UserAdmin> listUa = db.UserAdmins.ToList();
+            return View(listUa);
+
+            
             //return View(db.Meeting_Details.ToList());
-            var items = db.UserAdmins.ToList();
-            if (items != null)
-            {
-                ViewBag.data = items;
-            }
-            return View();
 
+            //Running Code
+            //var items = db.UserAdmins.ToList();
+            //if (items != null)
+            //{
+            //    ViewBag.data = items;
+            //}
+            //return View();
+
+            //Trial 1------
+            //List<UserAdmin> list_UA = new List<UserAdmin>();
+            //List<Meeting_Details> list_Meeting = new List<Meeting_Details>();
+
+            //modelUaMeeting finalItem = new modelUaMeeting();
+            //finalItem.listUA = list_UA;
+            //finalItem.listMeeting = list_Meeting;
+
+            //return View(finalItem);
+
+            //Trial 2------
+            //ViewBag.UserAdmins = new SelectList(db.UserAdmins, "ID", "Name");
+            //return View();
+
+            //Trial 3
+            //TempData["Data"] = md.Client_Name;
+            //return RedirectToAction("Index");
         }
-
         // GET: Admin_Meeting_Details/Details/5
         public ActionResult Details(int? id)
         {
@@ -121,7 +144,6 @@ namespace Project_1.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -129,6 +151,12 @@ namespace Project_1.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            Session.Abandon();
+            return RedirectToAction("Login15","ALogin");
         }
     }
 }
